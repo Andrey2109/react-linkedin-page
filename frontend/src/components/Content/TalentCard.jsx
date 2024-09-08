@@ -31,11 +31,17 @@ const TalentCard = ({
   linkedin_url,
   education,
   employment,
+  technologies,
 }) => {
   const currentYear = new Date().getFullYear();
   const graduationYear = parseInt(gradyear, 10);
   const yearsSinceGraduation = currentYear - graduationYear;
-  const displayEmployment = employment ? employment : "Not mentioned";
+  const displayEmployment = employment ? employment : [];
+  const skillsArray = technologies
+    ? technologies.split(",").map((skill) => skill.trim().toLowerCase())
+    : [];
+  const uniqueSkills = Array.from(new Set(skillsArray));
+
   return (
     <Card
       sx={{
@@ -124,9 +130,14 @@ const TalentCard = ({
             alignItems: "flex-start",
           }}
         >
-          <Chip icon={<CustomCheckCircleIcon />} label="Software Design" />
-          <Chip icon={<CustomCheckCircleIcon />} label="System Architecture" />
-          <Chip icon={<CustomCheckCircleIcon />} label="Algorithms" />
+          {uniqueSkills.map((skill, index) => (
+            <Chip
+              key={index}
+              icon={<CustomCheckCircleIcon />}
+              label={skill}
+              size="small"
+            />
+          ))}
         </Box>{" "}
       </Box>
 

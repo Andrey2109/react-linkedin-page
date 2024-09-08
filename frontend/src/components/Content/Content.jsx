@@ -35,6 +35,7 @@ const Content = () => {
             linkedin_url={profile.url}
             education={profile.latest_education}
             employment={profile.current_employment}
+            technologies={profile.technologies}
             key={`${profile.id}`}
           />
         ))}
