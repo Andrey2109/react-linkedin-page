@@ -10,7 +10,6 @@ import {
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SchoolIcon from "@mui/icons-material/School";
 import SvgIcon from "@mui/material/SvgIcon";
-import userImage from "./userImage.png";
 
 const CustomCheckCircleIcon = () => {
   return (
@@ -24,7 +23,19 @@ const CustomCheckCircleIcon = () => {
   );
 };
 
-const TalentCard = () => {
+const TalentCard = ({
+  name,
+  avatar,
+  years_of_experience,
+  gradyear,
+  linkedin_url,
+  education,
+  employment,
+}) => {
+  const currentYear = new Date().getFullYear();
+  const graduationYear = parseInt(gradyear, 10);
+  const yearsSinceGraduation = currentYear - graduationYear;
+  const displayEmployment = employment ? employment : "Not mentioned";
   return (
     <Card
       sx={{
@@ -46,17 +57,18 @@ const TalentCard = () => {
             mr: 2,
             borderRadius: "16px",
           }}
-          src={userImage}
+          src={avatar}
         >
-          OB
+          avatar_photo
         </Avatar>
         <CardContent>
-          <Typography variant="h6">Oded Basaraba</Typography>
+          <Typography variant="h6">{name}</Typography>
           <Typography variant="body2">
-            3 Years of experience | Years since graduation
+            {years_of_experience} Years of experience | {yearsSinceGraduation}{" "}
+            Years since graduation
           </Typography>
           <Typography variant="body2">
-            Github Repos: 41 | Lines of code: 6,139
+            Current Employment: {displayEmployment}
           </Typography>
         </CardContent>
       </Box>
@@ -148,7 +160,7 @@ const TalentCard = () => {
               Education
             </Typography>
             <Typography variant="body2" sx={{ width: "80px" }}>
-              Ben-Gurion University of Negev
+              {education}
             </Typography>
           </Box>
 
@@ -156,6 +168,7 @@ const TalentCard = () => {
           <Button
             variant="contained"
             color="primary"
+            onClick={() => window.open(linkedin_url, "_blank")}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -193,7 +206,6 @@ const TalentCard = () => {
               sx={{ pt: 2, fontSize: "0.75rem", fontWeight: "400" }}
             >
               {" "}
-              {/* Adjust paddingTop as needed */}
               View Profile On LinkedIn
             </Typography>
           </Button>

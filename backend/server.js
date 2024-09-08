@@ -1,8 +1,17 @@
 const express = require("express");
+const cors = require("cors"); // Import CORS module
 const { Pool } = require("pg");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// CORS configuration to allow requests from your specific frontend origin
+const corsOptions = {
+  origin: "http://localhost:5173", // The frontend server's URL
+  optionsSuccessStatus: 200, // For legacy browser support
+};
+
+app.use(cors(corsOptions)); // Use CORS middleware with the specified options
 
 // PostgreSQL pool setup
 const pool = new Pool({
