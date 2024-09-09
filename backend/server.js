@@ -1,19 +1,32 @@
 const express = require("express");
-const cors = require("cors"); // Import CORS module
+const cors = require("cors");
 const { Pool } = require("pg");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// CORS configuration to allow requests from your specific frontend origin
+// List of allowed origins
+const allowedOrigins = [
+  "http://site.talentsplease.s3-website-us-west-2.amazonaws.com",
+  "https://d1blze4d54x3w2.cloudfront.net",
+];
+
+// CORS middleware configuration
 const corsOptions = {
-  origin: "http://site.talentsplease.s3-website-us-west-2.amazonaws.com", // The frontend server's URL
-  optionsSuccessStatus: 200, // For legacy browser support
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-app.use(cors(corsOptions)); // Use CORS middleware with the specified options
+app.use(cors(corsOptions)); // Use CORS middleware with options
 
-// PostgreSQL pool setup
 const pool = new Pool({
   host: "node128.codingbc.com",
   database: "postgres",
