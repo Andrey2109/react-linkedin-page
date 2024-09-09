@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 // CORS configuration to allow requests from your specific frontend origin
 const corsOptions = {
-  origin: "http://localhost:5173", // The frontend server's URL
+  origin: "http://site.talentsplease.s3-website-us-west-2.amazonaws.com", // The frontend server's URL
   optionsSuccessStatus: 200, // For legacy browser support
 };
 
