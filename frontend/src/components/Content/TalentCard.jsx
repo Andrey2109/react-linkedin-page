@@ -44,7 +44,7 @@ const TalentCard = ({
 
   return (
     <Card
-      className="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      className=""
       sx={{
         display: "flex",
         justifyContent: "space-between",
@@ -75,7 +75,8 @@ const TalentCard = ({
             Years since graduation
           </Typography>
           <Typography variant="body2">
-            Current Employment: {displayEmployment}
+            Current Employment:{" "}
+            {displayEmployment ? displayEmployment : "Not mentioned"}
           </Typography>
         </CardContent>
       </Box>

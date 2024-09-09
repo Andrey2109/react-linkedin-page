@@ -1,7 +1,16 @@
-import { Box } from "@mui/material";
+import {
+  Box,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+  Paper,
+} from "@mui/material";
 import SearchFilters from "./SearchFilters";
 import TalentCard from "./TalentCard";
 import { useState, useEffect } from "react";
+import { TablePagination } from "@mui/material";
 
 const drawerWidth = "80%";
 
@@ -10,6 +19,17 @@ const Content = ({ profiles }) => {
   const [selectedFilter, setSelectedFilter] = useState("");
   const [sortOption, setSortOption] = useState("Relevance");
   const [filteredProfiles, setFilteredProfiles] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0); // Reset page to 0 when changing the number of rows per page
+  };
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
@@ -64,21 +84,38 @@ const Content = ({ profiles }) => {
         selectedFilter={selectedFilter}
         sortOption={sortOption}
       />
-      <Box>
-        {filteredProfiles?.map((profile) => (
-          <TalentCard
-            name={profile.name}
-            avatar={profile.avatar}
-            years_of_experience={profile.years_of_experience}
-            gradyear={profile.gradyear}
-            linkedin_url={profile.url}
-            education={profile.latest_education}
-            employment={profile.current_employment}
-            technologies={profile.technologies}
-            key={`${profile.id}`}
-          />
-        ))}
-      </Box>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableBody>
+            {filteredProfiles
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((profile) => (
+                <TableRow key={`${profile.id}`}>
+                  <TableCell sx={{ padding: "0px" }}>
+                    <TalentCard
+                      name={profile.name}
+                      avatar={profile.avatar}
+                      years_of_experience={profile.years_of_experience}
+                      gradyear={profile.gradyear}
+                      linkedin_url={profile.url}
+                      education={profile.latest_education}
+                      employment={profile.current_employment}
+                      technologies={profile.technologies}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+        <TablePagination
+          component="div"
+          count={filteredProfiles.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </TableContainer>
     </Box>
   );
 };
