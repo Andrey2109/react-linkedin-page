@@ -1,13 +1,11 @@
 import { Box, CssBaseline } from "@mui/material";
-import AppCotainer from "./components/AppContainer";
-
-
+import AppContainer from "./components/AppContainer";
 
 const App = () => {
   return (
     <Box>
       <CssBaseline />
-      <AppCotainer />
+      <AppContainer />
     </Box>
   );
 };

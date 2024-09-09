@@ -27,7 +27,9 @@ app.use(express.json()); // Middleware for parsing JSON bodies
 // Route to fetch all profiles
 app.get("/profiles", async (req, res) => {
   try {
-    const { rows } = await pool.query("SELECT * FROM profiles_example");
+    const { rows } = await pool.query(
+      "SELECT * FROM profiles_example LIMIT 500"
+    );
     res.json(rows);
   } catch (error) {
     console.error("Failed to fetch profiles:", error);

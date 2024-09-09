@@ -44,6 +44,7 @@ const TalentCard = ({
 
   return (
     <Card
+      className="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
       sx={{
         display: "flex",
         justifyContent: "space-between",
@@ -108,6 +109,8 @@ const TalentCard = ({
             alignSelf: "flex-start",
             width: "auto",
             boxShadow: "0 3px 5px 2px rgba(0, 0, 0, 0.1)",
+            minWidth: "250",
+            maxWidth: "250",
           }}
         >
           <Typography
@@ -122,12 +125,13 @@ const TalentCard = ({
           </Typography>
         </Box>
         <Box
-          display="flex"
-          gap={1}
-          mt={1}
           sx={{
-            flexDirection: "column",
+            display: "grid",
+            gridTemplateColumns: uniqueSkills.length > 4 ? "1fr 1fr" : "1fr",
+            gap: 1,
+            mt: 1,
             alignItems: "flex-start",
+            flexDirection: uniqueSkills.length > 4 ? "row" : "column",
           }}
         >
           {uniqueSkills.map((skill, index) => (

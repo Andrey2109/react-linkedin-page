@@ -3,27 +3,14 @@ import { Box, Button, Chip, TextField, Typography } from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
-function SearchFilters() {
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("");
-  const [sortOption, setSortOption] = useState("Relevance");
-
-  const handleSearchChange = (event) => {
-    setSearchValue(event.target.value);
-    console.log("Search:", event.target.value);
-  };
-
-  const handleFilterClick = (filter) => {
-    setSelectedFilter(filter);
-    console.log("Selected Filter:", filter);
-  };
-
-  const handleSortClick = () => {
-    const newSort = sortOption === "Relevance" ? "Experience" : "Relevance";
-    setSortOption(newSort);
-    console.log("Sort By:", newSort);
-  };
-
+function SearchFilters({
+  handleSearchChange,
+  handleFilterClick,
+  handleSortClick,
+  searchValue,
+  sortOption,
+  selectedFilter,
+}) {
   return (
     <Box mb={3}>
       <TextField
@@ -58,10 +45,10 @@ function SearchFilters() {
             onClick={() => handleFilterClick("Android")}
           />
           <Chip
-            label="IOS"
-            color={selectedFilter === "IOS" ? "primary" : "default"}
+            label="Web"
+            color={selectedFilter === "Web" ? "primary" : "default"}
             clickable
-            onClick={() => handleFilterClick("IOS")}
+            onClick={() => handleFilterClick("Web")}
           />
           <Chip
             label="Data"
