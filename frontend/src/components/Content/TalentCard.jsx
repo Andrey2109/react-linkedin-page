@@ -36,7 +36,7 @@ const TalentCard = ({
   const currentYear = new Date().getFullYear();
   const graduationYear = parseInt(gradyear, 10);
   const yearsSinceGraduation = currentYear - graduationYear;
-  const displayEmployment = employment ? employment : [];
+  const displayEmployment = employment || "Not mentioned";
   const skillsArray = technologies
     ? technologies.split(",").map((skill) => skill.trim().toLowerCase())
     : [];
@@ -75,8 +75,7 @@ const TalentCard = ({
             Years since graduation
           </Typography>
           <Typography variant="body2">
-            Current Employment:{" "}
-            {displayEmployment ? displayEmployment : "Not mentioned"}
+            Current Employment: {displayEmployment}
           </Typography>
         </CardContent>
       </Box>

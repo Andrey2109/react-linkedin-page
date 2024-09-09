@@ -41,6 +41,10 @@ const Content = ({ profiles }) => {
     setSelectedFilter(filter);
     setPage(0);
     console.log("Selected Filter:", filter);
+
+    if (filter === "Reset") {
+      setSearchValue("");
+    }
   };
 
   const handleSortClick = () => {
@@ -84,6 +88,7 @@ const Content = ({ profiles }) => {
         handleSearchChange={handleSearchChange}
         handleSortClick={handleSortClick}
         searchValue={searchValue}
+        setSearchValue={setSearchValue}
         selectedFilter={selectedFilter}
         sortOption={sortOption}
       />

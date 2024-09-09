@@ -44,9 +44,9 @@ const AppContainer = () => {
           <CircularProgress
             color="inherit"
             sx={{
-              position: "absolute", // Positions it relative to the nearest positioned ancestor (instead of just where it would normally appear in the flow).
-              top: "50%", // Centers it vertically
-              left: `calc(20% + 40%)`, // Moves it 40% from the left edge of the content area, which starts at 20% of the viewport
+              position: "absolute",
+              top: "50%",
+              left: `calc(20% + 40%)`,
               transform: "translateX(-50%)",
             }}
           />
