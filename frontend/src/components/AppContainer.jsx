@@ -3,6 +3,7 @@ import Content from "./Content/Content";
 import { Box } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
 
 const theme = createTheme({
@@ -39,7 +40,19 @@ const AppContainer = () => {
     <ThemeProvider theme={theme}>
       <Box className="app-container" component="main">
         <Menu />
-        {loading ? <h1>Loading...</h1> : <Content profiles={profiles} />}
+        {loading ? (
+          <CircularProgress
+            color="inherit"
+            sx={{
+              position: "absolute", // Positions it relative to the nearest positioned ancestor (instead of just where it would normally appear in the flow).
+              top: "50%", // Centers it vertically
+              left: `calc(20% + 40%)`, // Moves it 40% from the left edge of the content area, which starts at 20% of the viewport
+              transform: "translateX(-50%)",
+            }}
+          />
+        ) : (
+          <Content profiles={profiles} />
+        )}
       </Box>
     </ThemeProvider>
   );
