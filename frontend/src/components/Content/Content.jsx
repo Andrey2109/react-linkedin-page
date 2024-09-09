@@ -33,17 +33,20 @@ const Content = ({ profiles }) => {
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
+    setPage(0);
     console.log("Search:", event.target.value);
   };
 
   const handleFilterClick = (filter) => {
     setSelectedFilter(filter);
+    setPage(0);
     console.log("Selected Filter:", filter);
   };
 
   const handleSortClick = () => {
     const newSort = sortOption === "Relevance" ? "Experience" : "Relevance";
     setSortOption(newSort);
+    setPage(0);
     console.log("Sort By:", newSort);
   };
 
