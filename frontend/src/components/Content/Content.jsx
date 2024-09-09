@@ -37,10 +37,10 @@ const Content = ({ profiles }) => {
       // Additional filter logic based on `selectedFilter`
       if (selectedFilter && selectedFilter !== "Reset") {
         filtered = filtered.filter((profile) => {
-          return (
-            profile.industry_classification.toLowerCase() ===
-            selectedFilter.toLowerCase()
-          );
+          return profile.industry_classification
+            .trim()
+            .toLowerCase()
+            .includes(selectedFilter.toLowerCase().trim());
         });
       }
 

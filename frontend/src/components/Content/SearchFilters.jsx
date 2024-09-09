@@ -33,16 +33,22 @@ function SearchFilters({
             onClick={() => handleFilterClick("Backend")}
           />
           <Chip
+            label="Frontend"
+            color={selectedFilter === "Frontend" ? "primary" : "default"}
+            clickable
+            onClick={() => handleFilterClick("Frontend")}
+          />
+          <Chip
             label="Fullstack"
             color={selectedFilter === "Fullstack" ? "primary" : "default"}
             clickable
             onClick={() => handleFilterClick("Fullstack")}
           />
           <Chip
-            label="Android"
-            color={selectedFilter === "Android" ? "primary" : "default"}
+            label="Gaming"
+            color={selectedFilter === "Gaming" ? "primary" : "default"}
             clickable
-            onClick={() => handleFilterClick("Android")}
+            onClick={() => handleFilterClick("Gaming")}
           />
           <Chip
             label="Web"
@@ -57,10 +63,10 @@ function SearchFilters({
             onClick={() => handleFilterClick("Data")}
           />
           <Chip
-            label="Science"
-            color={selectedFilter === "Science" ? "primary" : "default"}
+            label="AI"
+            color={selectedFilter === "AI" ? "primary" : "default"}
             clickable
-            onClick={() => handleFilterClick("Science")}
+            onClick={() => handleFilterClick("AI")}
           />
           <Chip
             label="DevOps"
