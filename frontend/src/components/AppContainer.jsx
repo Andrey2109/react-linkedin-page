@@ -25,7 +25,9 @@ const AppContainer = () => {
     const fetchProfiles = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3000/profiles");
+        const response = await axios.get(
+          "https://react-linkedin-page.onrender.com/profiles"
+        );
         setProfiles(response.data); // Set the fetched profiles into state
       } catch (error) {
         console.error("Error fetching profiles:", error);
