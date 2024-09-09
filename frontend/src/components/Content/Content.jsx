@@ -28,7 +28,7 @@ const Content = ({ profiles }) => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset page to 0 when changing the number of rows per page
+    setPage(0);
   };
 
   const handleSearchChange = (event) => {
@@ -54,17 +54,16 @@ const Content = ({ profiles }) => {
     console.log("Sort By:", newSort);
   };
 
-  // Added useEffect hook here
   useEffect(() => {
     const filterAndSortProfiles = () => {
       let filtered = profiles.filter((profile) => {
         return profile.name.toLowerCase().includes(searchValue.toLowerCase());
       });
 
-      // Additional filter logic based on `selectedFilter`
       if (selectedFilter && selectedFilter !== "Reset") {
         filtered = filtered.filter((profile) => {
-          return profile.industry_classification
+          const industry = profile.industry_classification || "";
+          return industry
             .trim()
             .toLowerCase()
             .includes(selectedFilter.toLowerCase().trim());

@@ -56,7 +56,7 @@ const TalentCard = ({
       }}
     >
       {/* Cotainer one */}
-      <Box display="flex" alignItems="center">
+      <Box display="flex" alignItems="center" sx={{ maxWidth: "400px" }}>
         <Avatar
           sx={{
             width: 90,
@@ -88,6 +88,7 @@ const TalentCard = ({
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "flex-start",
+          minWidth: "250px",
           borderRadius: "16px",
 
           "& .MuiChip-root": {
@@ -118,7 +119,7 @@ const TalentCard = ({
             sx={{
               fontWeight: "bold",
               color: "black",
-              textAlign: "center",
+              textAlign: "left",
             }}
           >
             Skills
@@ -131,6 +132,7 @@ const TalentCard = ({
             gap: 1,
             mt: 1,
             alignItems: "flex-start",
+            justifyContent: "flex-start", // Ensures that grid items align to the start
             flexDirection: uniqueSkills.length > 4 ? "row" : "column",
           }}
         >
@@ -157,6 +159,7 @@ const TalentCard = ({
           justifyContent="space-between"
           alignItems="center"
           textAlign="center"
+          sx={{ pl: 2 }}
         >
           {/* Education Section */}
 
