@@ -9,6 +9,7 @@ const port = process.env.PORT;
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : [];
+console.log("Allowed Origins:", allowedOrigins);
 
 const corsOptions = {
   origin: function (origin, callback) {
