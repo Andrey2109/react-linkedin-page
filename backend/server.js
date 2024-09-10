@@ -6,7 +6,9 @@ const { Pool } = require("pg");
 const app = express();
 const port = process.env.PORT;
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",");
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : [];
 
 const corsOptions = {
   origin: function (origin, callback) {
