@@ -9,7 +9,7 @@ based on their experience, skills, and industry specifics.
 - **Dynamic Searching**: Users can dynamically search for candidates based on keywords.
 - **Advanced Filtering**: Filters for specific roles like Backend, Frontend, Fullstack, and more.
 - **Sorting Options**: Ability to sort candidates by relevance or experience.
-- **Responsive Design**: Fully responsive web interface ensuring a smooth experience across all devices.
+
 
 ## Technology Stack
 - **Frontend**: React.js, Material-UI
