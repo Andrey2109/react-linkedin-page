@@ -69,7 +69,7 @@ const Login = () => {
       ) : (
         <Button
           variant="contained"
-          color="primary"
+          color="#FFD700"
           fullWidth
           onClick={handleLogin}
         >

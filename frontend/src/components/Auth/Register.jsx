@@ -77,7 +77,7 @@ const Register = () => {
       ) : (
         <Button
           variant="contained"
-          color="primary"
+          color="#FFD700"
           fullWidth
           onClick={handleRegister}
         >
