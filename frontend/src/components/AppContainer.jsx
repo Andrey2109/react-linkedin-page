@@ -36,7 +36,7 @@ const AppContainer = () => {
         setLoading(true);
         // Fetch profiles from the PostgreSQL endpoint
         const response = await axios.get(
-          "http://localhost:3000/api/profiles/postgres",
+          "https://react-linkedin-page.onrender.com/api/profiles/postgres",
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include the token in the Authorization header
