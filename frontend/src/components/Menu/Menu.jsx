@@ -6,13 +6,22 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  Button,
 } from "@mui/material";
-
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = "20%";
 
 const Menu = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <Drawer
       sx={{
@@ -41,6 +50,21 @@ const Menu = () => {
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
+
+        {!token ? (
+          <>
+            <Button color="inherit" onClick={() => navigate("/login")}>
+              Login
+            </Button>
+            <Button color="inherit" onClick={() => navigate("/register")}>
+              Register
+            </Button>
+          </>
+        ) : (
+          <Button color="inherit" onClick={handleLogout}>
+            Logout
+          </Button>
+        )}
       </List>
     </Drawer>
   );
